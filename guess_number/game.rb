@@ -2,11 +2,15 @@ class Game
   ATTEMPT_NUMBER = 5
 
   def initialize
-    @computer_number = Random.new.rand(20)
+    generate_random_number
     greets
   end
 
   def run
+    if @finished
+      puts 'You are trying to play this game second time!'
+      generate_random_number
+    end
     game_course
   end
 
@@ -17,10 +21,16 @@ class Game
       'And try to guess it'
   end
 
+  def generate_random_number
+    @computer_number = Random.new.rand(20)
+  end
+
   def game_course
     ATTEMPT_NUMBER.times do
       break if win?(user_input)
     end
+
+    @finished = true
   end
 
   def win?(user_number)
