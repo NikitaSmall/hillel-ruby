@@ -8,7 +8,7 @@ class LifeCounter
   end
 
   def dead?
-    @life_count == 0
+    @life_count.zero?
   end
 
   def decrement

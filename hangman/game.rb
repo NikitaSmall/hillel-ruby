@@ -4,7 +4,7 @@ require_relative 'word'
 class Game
   def initialize
     @life_counter = LifeCounter.new
-    @word = Word.new
+    @word = Word.new(read_category)
   end
 
   def run
@@ -18,8 +18,7 @@ class Game
     loop do
       announce_game_state
 
-      user_char = read_input
-      guessed = @word.char_exists?(user_char)
+      guessed = @word.char_exists?(read_input)
 
       if guessed
         break if @word.finished?
@@ -33,6 +32,15 @@ class Game
   def announce_game_state
     puts "Your life total is #{@life_counter.life_count}"
     puts "Your word is #{@word.visible_word}"
+  end
+
+  def read_category
+    puts 'Enter your category!'
+    puts 'star_wars => StarWars'
+    puts 'harry_potter => Harry Potter'
+    puts 'lotr => Lord of The Rings'
+
+    gets.chomp!.to_sym
   end
 
   def read_input

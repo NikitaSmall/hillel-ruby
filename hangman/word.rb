@@ -1,8 +1,14 @@
 class Word
   attr_reader :visible_word, :secret_word
 
-  def initialize
-    @secret_word = Faker::StarWars.vehicle.downcase
+  CATEGORIES = {
+    star_wars: Faker::StarWars.vehicle,
+    harry_potter: Faker::HarryPotter.character,
+    lotr: Faker::LordOfTheRings.character
+  }
+
+  def initialize(category)
+    @secret_word = CATEGORIES[category].downcase
     @visible_word = '_' * @secret_word.length
   end
 
