@@ -4,6 +4,7 @@ gem 'sinatra'
 gem 'slim'
 
 gem 'rake'
+gem 'gibberish'
 
 gem 'sqlite3'
 gem 'activerecord'

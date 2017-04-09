@@ -4,7 +4,7 @@ module Controllers
   module Admin
     class Base < Controllers::Base
       use Rack::Auth::Basic do |username, password|
-        username == 'admin' && password == 'admin'
+        Models::User.exists?(username, password)
       end
     end
   end

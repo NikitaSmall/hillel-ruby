@@ -1,5 +1,6 @@
 require 'sqlite3'
 require 'active_record'
+require 'gibberish'
 
 require 'sinatra/base'
 require 'slim'
@@ -7,6 +8,7 @@ require 'slim'
 require 'logger'
 
 require_relative '../models/product'
+require_relative '../models/user'
 
 require_relative '../controllers/main'
 require_relative '../controllers/static'

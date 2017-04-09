@@ -9,10 +9,7 @@ namespace :db do
   task :seed do
     require_relative 'db/seed'
 
-    if Models::Product.exists?
-      log('Product table is not empty.')
-    else
-      Seed.seed
-    end
+
+    Seed.seed
   end
 end
