@@ -5,4 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :posts
+  has_many :comments
+
+  def last_comments(count = 3)
+    comments.order('created_at DESC').limit(count)
+  end
+
+  def self.last_user
+    order('created_at DESC').first
+  end
 end
