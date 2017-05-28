@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   devise_for :users
 
   post '/comments' => 'comments#create', as: 'comments'
+
+  mount Ping::Engine, at: '/ping'
 end
