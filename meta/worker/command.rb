@@ -1,3 +1,4 @@
+require_relative './weather_forecast'
 require 'date'
 
 class Command
@@ -5,7 +6,7 @@ class Command
     'time' => -> (params) { p Time.now },
     'stop' => -> (params) { p 'execute stop'; exit },
     'date' => -> (params) { p Date.today },
-    'weather' => -> (params) { p 'the weather is nice' },
+    'weather' => -> (params) { p WeatherForecast.new.forecast(params['city_name']) },
     'location' => -> (params) { p 'location is fine' },
     'sleep' => -> (params) { p "sleeping for #{params['time']}"; sleep(params['time']) }
   }
