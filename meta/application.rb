@@ -1,7 +1,7 @@
 require 'json'
 require 'sinatra'
 
-require_relative './models/config'
+require_relative './config/config'
 
 get '/' do
   @tasks = Task.all
