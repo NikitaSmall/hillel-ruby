@@ -25,9 +25,15 @@ class Worker
   end
 
   def execute_tasks
+    if @tasks.empty?
+      p 'No new tasks!'
+      p 'sleep for 3 seconds'
+      sleep(3)
+    end
+
     @tasks.each do |task|
       @command_storage.execute_command(task)
     end
-    p '---'
+    # p '---'
   end
 end
