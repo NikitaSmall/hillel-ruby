@@ -37,4 +37,13 @@ RSpec.describe NameGen do
 
     expect(name.length).to be >= syllable_number
   end
+
+  it "generates name with rand generator" do
+    NameGen::init(:rand)
+
+    name = NameGen::get_name
+
+    expect(name).to be_a String
+    expect(name).to_not be_empty
+  end
 end

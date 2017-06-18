@@ -1,19 +1,20 @@
 module NameGen
   class Generator
-    def initialize
-      @elements_collection = File.read(File.join(File.dirname(__FILE__),
-                                                 '..', '..', 'config',
-                                                 'syllable.txt')).split
+    def initialize(type = :markov)
+      @type = :markov
+
+      @markov_generator = NameGen::MarkovGenerator.new
+      @rand_generator = NameGen::RandGenerator.new
     end
 
-    def get_name(elements)
-      result_name = []
-
-      elements.times do
-        result_name << @elements_collection.sample
+    def get_name(syllables)
+      case @type
+      when :markov
+        @markov_generator.get_name(syllables)
+      when :rand
+        @rand_generator.get_name(syllables)
       end
-
-      result_name.join.capitalize
     end
+
   end
 end
