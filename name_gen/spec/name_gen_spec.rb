@@ -46,4 +46,15 @@ RSpec.describe NameGen do
     expect(name).to be_a String
     expect(name).to_not be_empty
   end
+
+  it "changes generation type during the test" do
+    NameGen::init(:rand)
+    expect(NameGen::configuration.type).to eq(:rand)
+
+    NameGen::configure do |config|
+      config.type = :markov
+    end
+
+    expect(NameGen::configuration.type).to eq(:markov)
+  end
 end
