@@ -5,6 +5,9 @@ require_relative './name_gen/markov_generator'
 require_relative './name_gen/generator'
 require_relative './name_gen/config'
 
+require_relative './name_gen/rus_generator/markov_field'
+require_relative './name_gen/rus_generator/generator'
+
 module NameGen
   class << self
     attr_reader :configuration

@@ -57,4 +57,13 @@ RSpec.describe NameGen do
 
     expect(NameGen::configuration.type).to eq(:markov)
   end
+
+  it "uses rus letters in names" do
+    NameGen::init(:rus)
+    name = NameGen::get_name
+
+    expect(name).to satisfy do |name|
+      name.include?('е') || name.include?('ю') || name.include?('и') || name.include?('о')
+    end
+  end
 end

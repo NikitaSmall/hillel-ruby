@@ -36,4 +36,4 @@ end
 options = Parser.parse(ARGV)
 
 NameGen::init(options.type.to_sym)
-p NameGen::get_name(options.len)
+puts NameGen::get_name(options.len)
