@@ -18,7 +18,10 @@ module Money
 
       def online_rates(base_currency: :usd, rate_provider: :fixer)
         @base_currency = base_currency
-        @currency_rates = RATES_PROVIDERS[rate_provider].call(base_currency)
+        @currency_rates = RATES_PROVIDERS.fetch(rate_provider).call(base_currency)
+      rescue KeyError
+        raise ::Money::MoneyError, 'Unable to find this currency. ' \
+          "Available currencies are: #{Money.currency_rates.keys.join(' ')}"
       end
     end
 
